@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from code.const import WIN_WIDTH, ENTITY_SPEED
+
 from code.Entity import Entity
+from code.const import WIN_WIDTH, ENTITY_SPEED
 
 
-class Background(Entity):
-    def __init__(self, name: str, position: tuple):
+class Enemy(Entity):
+    def __init__(self, name, position):
         super().__init__(name, position)
 
     def move(self, ):
