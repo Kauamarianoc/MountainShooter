@@ -1,11 +1,9 @@
 import sys
 from datetime import datetime
-
 import pygame
 from pygame import Surface, Rect
 from pygame.constants import K_RETURN, K_BACKSPACE, KEYDOWN, K_ESCAPE
 from pygame.font import Font
-
 from code.Const import C_YELLOW, SCORE_POS, MENU_OPTION, C_WHITE
 from code.DBProxy import DBProxy
 
@@ -26,16 +24,16 @@ class Score:
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.score_text(48, 'YOU WIN!!!', C_YELLOW, SCORE_POS['Title'])
+            text = 'Enter Player 1 name (4 characters): '
+            score = player_score[0]
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
-                text = 'Enter Player 1 name (4 characters): )'
             if game_mode == MENU_OPTION[1]:
                 score = (player_score[0] + player_score[1]) / 2
                 text = 'Enter Team name (4 characters): )'
             if game_mode == MENU_OPTION[2]:
                 if player_score[0] >= player_score[1]:
                     score = player_score[0]
-                    text = 'Enter Player 1 name (4 characters): )'
                 else:
                     score = player_score[1]
                     text = 'Enter Player 2 name (4 characters): )'
@@ -89,6 +87,7 @@ class Score:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)
+
 
 def get_formatted_date():
     current_datetime = datetime.now()
